@@ -15,4 +15,5 @@ public record ReportResponseDTO(
         String note,
         String fileUrl
 ) {
+
 }

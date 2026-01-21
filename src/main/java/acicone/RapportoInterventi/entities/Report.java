@@ -3,6 +3,7 @@ package acicone.RapportoInterventi.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.UUID;
 
 @Entity
@@ -26,8 +27,14 @@ private String fileContentType;
     private LocalDate  dataIntervento;
     @Column(nullable = false)
     private Integer oreLavorate;
+    private LocalTime oraInizio;
+    private LocalTime oraFine;
+    private String note;
+    private String fileUrl; // ad esempio la URL di un file salvato
+
     @Column(nullable = false)
     private Integer anno;
+
             @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
@@ -39,7 +46,7 @@ private String fileContentType;
  public Report() {
  };
 
-    public Report(UUID id, ReportType type, String fileName, String filePath, String fileContentType, String descrizione, LocalDate dataIntervento, Integer oreLavorate, Integer anno, User user, Company company, LocalDate createdAt) {
+    public Report(UUID id, ReportType type, String fileName, String filePath, String fileContentType, String descrizione, LocalDate dataIntervento, Integer oreLavorate, LocalTime oraInizio, LocalTime oraFine, String note, String fileUrl, Integer anno, User user, Company company, LocalDate createdAt) {
         this.id = id;
         this.type = type;
         this.fileName = fileName;
@@ -48,6 +55,10 @@ private String fileContentType;
         this.descrizione = descrizione;
         this.dataIntervento = dataIntervento;
         this.oreLavorate = oreLavorate;
+        this.oraInizio = oraInizio;
+        this.oraFine = oraFine;
+        this.note = note;
+        this.fileUrl = fileUrl;
         this.anno = anno;
         this.user = user;
         this.company = company;
@@ -106,6 +117,39 @@ private String fileContentType;
         this.dataIntervento = dataIntervento;
     }
 
+
+    public LocalTime getOraInizio() {
+        return oraInizio;
+    }
+
+    public void setOraInizio(LocalTime oraInizio) {
+        this.oraInizio = oraInizio;
+    }
+
+    public LocalTime getOraFine() {
+        return oraFine;
+    }
+
+    public void setOraFine(LocalTime oraFine) {
+        this.oraFine = oraFine;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public String getFileUrl() {
+        return fileUrl;
+    }
+
+    public void setFileUrl(String fileUrl) {
+        this.fileUrl = fileUrl;
+    }
+
     public Integer getOreLavorate() {
         return oreLavorate;
     }
@@ -162,5 +206,7 @@ private String fileContentType;
                 ", createdAt=" + createdAt +
                 '}';
     }
+
+
 }
 

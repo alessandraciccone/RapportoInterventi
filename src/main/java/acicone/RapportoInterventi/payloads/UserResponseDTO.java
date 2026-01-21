@@ -7,6 +7,6 @@ public record UserResponseDTO(
         String nome,
         String cognome,
         String email,
-        Boolean isAdmin
+         String role
 ) {
 }

@@ -1,4 +1,12 @@
 package acicone.RapportoInterventi.payloads;
 
-public record LoginResponseDTO(String token) {
+import java.util.UUID;
+
+public record LoginResponseDTO(
+        String accessToken,
+        String refreshToken,
+        String role,
+        UUID userId
+) {
+
 }

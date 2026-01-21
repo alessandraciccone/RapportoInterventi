@@ -1,7 +1,10 @@
 package acicone.RapportoInterventi.payloads;
 
+import java.util.UUID;
+
 public record RegistrationResponseDTO(
-        String message,
-        String userId
+        UUID userId,
+        String email,
+        String message
 ) {
 }
