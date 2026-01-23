@@ -20,6 +20,8 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+import static org.springframework.http.ResponseEntity.status;
+
 @Service
 public class SubscriptionService {
 
@@ -158,7 +160,7 @@ public class SubscriptionService {
 
 
     public List<SubscriptionResponseDTO> getSubscriptionsByStatus(SubscriptionStatus status) {
-        List<Subscription> subscriptions = subscriptionRepository.findByStatus(status.name());
+        List<Subscription> subscriptions = subscriptionRepository.findByStatus(status);
         return subscriptions.stream()
                 .map(this::mapToResponseDTO)
                 .collect(Collectors.toList());
